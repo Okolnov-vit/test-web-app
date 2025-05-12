@@ -18,6 +18,17 @@ jobs:
         # проверим, что index.html существует
         test -f index.html
 
+        - name: Проверка наличия кнопки в index.html
+      run: |
+        # ищем кнопку по её id и уникальному стилю
+        grep '<button[^>]*id="testButton"[^>]*style="margin-top: 200px;"' index.html
+        if [ $? -ne 0 ]; then
+          echo "Кнопка с id='testButton' и заданным стилем не найдена в index.html"
+          exit 1
+        else
+          echo "Кнопка найдена в index.html"
+        fi
+
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v20
       with:
