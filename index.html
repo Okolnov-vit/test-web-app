@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Тестовое приложение</title>
+<style>
+  body {
+    margin: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  #testButton {
+    padding: 20px 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+  }
+  #title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div id="title">Тестовое приложение</div>
+<button id="testButton" style="margin-top: 200px;">Изменить цвет</button>
+
+<script>
+  const button = document.getElementById('testButton');
+
+  button.addEventListener('click', () => {
+    const colors = ['#ff4d4d', '#4dff4d', '#4d4dff', '#ffff4d', '#ff4dff', '#4dffff'];
+    const currentColor = button.style.backgroundColor;
+    let newColor;
+    do {
+      newColor = colors[Math.floor(Math.random() * colors.length)];
+    } while (newColor === currentColor);
+    button.style.backgroundColor = newColor;
+  });
+</script>
+
+</body>
+</html>
